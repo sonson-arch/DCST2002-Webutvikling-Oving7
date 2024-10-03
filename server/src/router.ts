@@ -13,7 +13,7 @@ router.post('/run', (req, res) => {
     const process = childProcess.spawn('docker', [
       'run',
       '--rm',
-      'node-image',
+      'todo-server',
       'node',
       '-e',
       req.body.source,
