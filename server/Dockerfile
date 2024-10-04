@@ -1,16 +1,10 @@
 #docker build -t todo-server -f server/Dockerfile .
 #docker run -p 3000:3000 todo-server
-# Use Debian latest stable from https://hub.docker.com as base image
-FROM debian:latest
-
-# Upgrade packages
-RUN apt-get update && apt-get -y upgrade
+# Use Docker's official DinD image
+FROM docker:19.03.12-dind
 
 # Install Node.js and npm
-RUN apt-get -y install nodejs 
-
-# Install npm
-RUN apt-get -y install npm
+RUN apk add --no-cache nodejs npm
 
 # Create app directory
 WORKDIR /usr/src/app
